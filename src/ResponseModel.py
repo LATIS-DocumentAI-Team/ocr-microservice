@@ -1,13 +1,6 @@
-def ResponseModel(data, message):
-    if type(data) is list:
+def ResponseModel(ocr_result, message):
         return {
-            "data": data,
-            "code": 200,
-            "message": message,
-        }
-    else:
-        return {
-            "data": [data],
+            "ocr_result": ocr_result,
             "code": 200,
             "message": message,
         }

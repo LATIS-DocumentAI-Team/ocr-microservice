@@ -22,6 +22,7 @@ async def upload_file(ocr_method: str, file: UploadFile = File(...)):
     # Read the uploaded file
     contents = await file.read()
     print(type(contents))
+    # TODO: Convert to Path
     image_stream = io.BytesIO(contents)
     ocr = OCRAdapter(ocr_method, ["fr"])
     ocr_result = ocr.apply_ocr(image_stream)
