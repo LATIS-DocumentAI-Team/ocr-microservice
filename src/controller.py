@@ -24,8 +24,7 @@ async def upload_file(ocr_method: str, file: UploadFile = File(...)):
     # Read the uploaded file
     file_path = save_file_to_tmp(file)
     ocr = OCRAdapter(ocr_method, ["fr"])
-    print(file_path)
-    ocr_result = ocr.apply_ocr(file_path)
+    ocr_result = ocr.apply_ocr(file_path).serialize()
 
     delete_file(file_path)
     # image = Image.open(io.BytesIO(contents))
