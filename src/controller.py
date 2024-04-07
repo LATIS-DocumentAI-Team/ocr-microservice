@@ -1,7 +1,4 @@
-import io
-
 from DocumentAI_std.utils.OCR_adapter import OCRAdapter
-from PIL import Image
 from fastapi import FastAPI, UploadFile, File
 from starlette.responses import JSONResponse
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
