@@ -13,7 +13,6 @@ app = FastAPI()
 async def upload_file(ocr_method: str, file: UploadFile = File(...)):
     valid_extensions = ["jpg", "jpeg", "png", "gif", "bmp", "tiff"]
 
-    # Check if the uploaded file is an image
     file_extension = file.filename.split(".")[-1]
     if file_extension.lower() not in valid_extensions:
         return JSONResponse(
@@ -27,11 +26,5 @@ async def upload_file(ocr_method: str, file: UploadFile = File(...)):
     ocr_result = ocr.apply_ocr(file_path).serialize()
 
     delete_file(file_path)
-    # image = Image.open(io.BytesIO(contents))
-
-    # Apply OCR based on the chosen method
-    # ocr_result = ""
-
-    # Add other OCR methods here...
 
     return {"ocr_result": ocr_result}
