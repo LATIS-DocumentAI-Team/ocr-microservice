@@ -38,4 +38,4 @@ def delete_file(file_path: str):
     if os.path.exists(file_path):
         os.remove(file_path)
     else:
-        print(f"The file '{file_path}' does not exist.")
+        raise FileNotFoundError(f"The file '{file_path}' does not exist.")
