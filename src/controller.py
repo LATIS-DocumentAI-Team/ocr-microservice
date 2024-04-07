@@ -1,3 +1,5 @@
+import io
+
 from DocumentAI_std.utils.OCR_adapter import OCRAdapter
 from fastapi import FastAPI, UploadFile, File
 from starlette.responses import JSONResponse
@@ -19,8 +21,10 @@ async def upload_file(ocr_method: str, file: UploadFile = File(...)):
 
     # Read the uploaded file
     contents = await file.read()
+    print(type(contents))
+    image_stream = io.BytesIO(contents)
     ocr = OCRAdapter(ocr_method, ["fr"])
-    ocr_result = ocr.apply_ocr(contents)
+    ocr_result = ocr.apply_ocr(image_stream)
     # image = Image.open(io.BytesIO(contents))
 
     # Apply OCR based on the chosen method
