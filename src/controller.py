@@ -1,7 +1,7 @@
-from typing import Annotated, List
+from typing import List
 
 from DocumentAI_std.utils.OCR_adapter import OCRAdapter
-from fastapi import FastAPI, UploadFile, File, HTTPException, Query, Depends
+from fastapi import FastAPI, UploadFile, File, HTTPException, Query
 from starlette.responses import JSONResponse
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 

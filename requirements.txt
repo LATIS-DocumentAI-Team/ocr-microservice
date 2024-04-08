@@ -1,4 +1,5 @@
 fastapi~=0.110.1
 starlette~=0.37.2
 uvicorn~=0.29.0
-python-multipart
+python-multipart~=0.0.9
+DocumentAI-std
