@@ -1,8 +1,5 @@
-import io
-from http.client import HTTPException
-
 from DocumentAI_std.utils.OCR_adapter import OCRAdapter
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, HTTPException
 from starlette.responses import JSONResponse
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
