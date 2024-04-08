@@ -5,6 +5,7 @@ from fastapi import FastAPI, UploadFile, File
 from starlette.responses import JSONResponse
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
+from src.ResponseModel import ResponseModel
 from src.utils import save_file_to_tmp, delete_file
 
 app = FastAPI()
@@ -22,9 +23,9 @@ async def upload_file(ocr_method: str, file: UploadFile = File(...)):
 
     # Read the uploaded file
     file_path = save_file_to_tmp(file)
-    ocr = OCRAdapter(ocr_method, ["fr"])
+    ocr = OCRAdapter(ocr_method, ["en"])
     ocr_result = ocr.apply_ocr(file_path).serialize()
 
     delete_file(file_path)
-
-    return {"ocr_result": ocr_result}
+    print(ocr_result)
+    return ResponseModel(ocr_result, "success")
