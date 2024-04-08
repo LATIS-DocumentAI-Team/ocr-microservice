@@ -27,5 +27,5 @@ async def upload_file(ocr_method: str, file: UploadFile = File(...)):
     ocr_result = ocr.apply_ocr(file_path).serialize()
 
     delete_file(file_path)
-    print(ocr_result)
+    print(type(ocr_result['elements'][0]['x']))
     return ResponseModel(ocr_result, "success")
