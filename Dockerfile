@@ -1,3 +1,4 @@
+# TODO: Enable GPU for Dockerfile for easyocr
 FROM python:3.11.8-slim
 WORKDIR /project
 ADD . /project

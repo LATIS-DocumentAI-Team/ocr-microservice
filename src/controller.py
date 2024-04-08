@@ -20,6 +20,9 @@ async def upload_file(
     ),
     file: UploadFile = File(...),
 ):
+    # TODO: - Add in the document which ocr support multiple language
+    #       - Rename the URI
+    #       - The Fastest is Tesseract
     valid_languages = ["fr", "en"]
     valid_extensions = ["jpg", "jpeg", "png", "gif", "bmp", "tiff"]
 
