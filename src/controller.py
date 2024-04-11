@@ -13,11 +13,15 @@ app = FastAPI()
 
 @app.post("/applyOcr/")
 async def apply_ocr(
-    ocr_method: str,
+    ocr_method: str = Query(
+        default="tesseract",
+        description="This attribut indicates which ocr method will be applied, for Paddle ocr, `ocr_method = paddle`, "
+        "for Tesseract, `ocr_method = tesseract`, for EasyOCR, `ocr_method = easy`",
+    ),
     languages: List[str] = Query(
-        None,
-        description="List of supported languages. Supported languages are 'fr' (French) and 'en' (English). "
-                    "Note: Paddle OCR accept only one language.",
+        ["en"],
+        description="List of supported languages. Supported languages are `fr` (French) and `en` (English). "
+        "Note: Paddle OCR accept only one language.",
     ),
     file: UploadFile = File(...),
 ):
