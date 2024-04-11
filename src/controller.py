@@ -11,18 +11,16 @@ from src.utils import save_file_to_tmp, delete_file
 app = FastAPI()
 
 
-@app.post("/upload/")
-async def upload_file(
+@app.post("/applyOcr/")
+async def apply_ocr(
     ocr_method: str,
     languages: List[str] = Query(
         None,
-        description="List of supported languages. Supported languages are 'fr' (French) and 'en' (English).",
+        description="List of supported languages. Supported languages are 'fr' (French) and 'en' (English). "
+                    "Note: Paddle OCR accept only one language.",
     ),
     file: UploadFile = File(...),
 ):
-    # TODO: - Add in the document which ocr support multiple language
-    #       - Rename the URI
-    #       - The Fastest is Tesseract
     valid_languages = ["fr", "en"]
     valid_extensions = ["jpg", "jpeg", "png", "gif", "bmp", "tiff"]
 
