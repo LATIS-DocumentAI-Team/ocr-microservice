@@ -1,5 +1,5 @@
 # TODO: Enable GPU for Dockerfile for easyocr
-FROM nvidia/cuda:11.0-base-ubuntu20.04
+FROM nvidia/cuda:11.0.3-base-ubuntu20.04
 
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
