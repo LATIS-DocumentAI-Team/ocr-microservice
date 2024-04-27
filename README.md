@@ -82,7 +82,19 @@ docker run -p 8000:8000 --name ocr-api hamzagbada18/ocr-microservice:latest
 
 You can access the [OpenAPI Specification](https://swagger.io/specification/) documentation through the following link: [localhost:8000/docs](http://localhost:8000/docs)
 
-4. **Example usage with curl:**
+5. **Acces throw REST API**
+- **POST /applyOcr/**
+- Apply OCR
+
+**Params:**
+
+
+| Name         | Description                                                                                                                                                                  |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ocr_method` | This attribute indicates which OCR method will be applied. For Paddle OCR, `ocr_method = paddle`. For Tesseract, `ocr_method = tesseract`. For EasyOCR, `ocr_method = easy`. |
+| `languages`  | List of supported languages. Supported languages are `fr` (French) and `en` (English). Note: Paddle OCR accepts only one language.                                           |
+
+6. **Example usage with curl:**
 
 ```shell
 curl -X 'POST' \
@@ -91,3 +103,8 @@ curl -X 'POST' \
   -H 'Content-Type: multipart/form-data' \
   -F 'file=@invoiceBLUR.png;type=image/png'
 ```
+
+
+
+
+
