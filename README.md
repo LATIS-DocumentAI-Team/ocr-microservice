@@ -83,7 +83,7 @@ docker run -p 8000:8000 --name ocr-api hamzagbada18/ocr-microservice:latest
 You can access the [OpenAPI Specification](https://swagger.io/specification/) documentation through the following link: [localhost:8000/docs](http://localhost:8000/docs)
 
 5. **Acces throw REST API**
-- **POST /applyOcr/**
+- `POST /applyOcr/`
 - Apply OCR
 
 **Params:**
