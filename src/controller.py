@@ -10,6 +10,7 @@ from src.utils import save_file_to_tmp, delete_file
 
 app = FastAPI()
 
+# TODO: Add the following languages: German, Greek or Latin, Arabic if possible,and chinese or japanese
 
 @app.post("/applyOcr/")
 async def apply_ocr(
