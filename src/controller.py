@@ -10,7 +10,6 @@ from src.utils import save_file_to_tmp, delete_file
 
 app = FastAPI()
 
-# TODO: Add the following languages: German, Greek or Latin, Arabic if possible,and chinese or japanese
 
 @app.post("/applyOcr/")
 async def apply_ocr(
@@ -20,13 +19,14 @@ async def apply_ocr(
         "for Tesseract, `ocr_method = tesseract`, for EasyOCR, `ocr_method = easy`",
     ),
     languages: List[str] = Query(
-        ["en"],
-        description="List of supported languages. Supported languages are `fr` (French) and `en` (English). "
-        "Note: Paddle OCR accept only one language.",
+        default= ["en"],
+        description="List of supported languages. Supported languages are `fr` (French), `en` (English), `de` (German), `ar` (Arabic), `ja` (Japanese), `ch_sim` (Chinese Simplified), and `hi` (Hindi)"
+        "Note: Paddle OCR accept only one language (not a list of languages).",
     ),
     file: UploadFile = File(...),
 ):
-    valid_languages = ["fr", "en"]
+    valid_languages = ["fr", "en", "de", "ar", "ja", "ch_sim", "hi"]
+
     valid_extensions = ["jpg", "jpeg", "png", "gif", "bmp", "tiff"]
 
     file_extension = file.filename.split(".")[-1]
@@ -39,7 +39,7 @@ async def apply_ocr(
     if any(lang not in valid_languages for lang in languages):
         raise HTTPException(
             status_code=400,
-            detail=f"Invalid language list {languages}. Supported languages are 'fr' (French) and 'en' (English).",
+            detail=f"Invalid language list {languages}. Supported languages are `fr` (French), `en` (English), `de` (German), `ar` (Arabic), `ja` (Japanese), `ch_sim` (Chinese Simplified), and `hi` (Hindi).",
         )
 
     file_path = save_file_to_tmp(file)
